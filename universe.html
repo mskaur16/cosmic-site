@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Buttons */
+a {
+    color: black;
+    background-color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 15px rgba(0,120,255,0.8);
+}
+
+a:active {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0,120,255,1);
+}
+</style>
+</head>
+
+<body>
+
+
+<title>Cosmology</title>
+<h1 style="font-size:100px;text-align:center;margin-top:80px;">COSMOLOGY</h1>
+
+<div style="text-align:center;margin-bottom:20px;">
+    <a href="eclipse.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="cosmology.html">back</a>
+</div>
+
+<hr>
+
+
+<style>
+<canvas id="universe"></canvas>
+
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+}
+canvas {
+    display: block;
+}
+</style>
+</head>
+<body>
+
+<canvas id="universe"></canvas>
+
+<script>
+const canvas = document.getElementById("universe");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+// ---------- Stars ----------
+let stars = [];
+for (let i = 0; i < 400; i++) {
+    stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2
+    });
+}
+
+// ---------- Sun ----------
+const sun = {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    radius: 35
+};
+
+// ---------- Planets ----------
+let planets = [
+    { orbit: 90, size: 8, speed: 0.02, angle: 0, color: "lightblue" },
+    { orbit: 140, size: 12, speed: 0.015, angle: 0, color: "orange" },
+    { orbit: 200, size: 15, speed: 0.01, angle: 0, color: "purple" }
+];
+
+// ---------- Spiral Galaxy ----------
+let galaxyPoints = [];
+function createGalaxy() {
+    const centerX = canvas.width * 0.75;
+    const centerY = canvas.height * 0.3;
+
+    for (let i = 0; i < 800; i++) {
+        let angle = i * 0.1;
+        let radius = 0.3 * i;
+
+        let x = centerX + radius * Math.cos(angle);
+        let y = centerY + radius * Math.sin(angle);
+
+        galaxyPoints.push({ x, y });
+    }
+}
+createGalaxy();
+
+function drawStars() {
+    ctx.fillStyle = "white";
+    stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+}
+
+function drawSun() {
+    let gradient = ctx.createRadialGradient(
+        sun.x, sun.y, 5,
+        sun.x, sun.y, sun.radius
+    );
+    gradient.addColorStop(0, "yellow");
+    gradient.addColorStop(1, "orange");
+
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
+    ctx.fill();
+}
+
+function drawPlanets() {
+    planets.forEach(p => {
+        p.angle += p.speed;
+
+        let x = sun.x + p.orbit * Math.cos(p.angle);
+        let y = sun.y + p.orbit * Math.sin(p.angle);
+
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(x, y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+}
+
+function drawGalaxy() {
+    ctx.fillStyle = "white";
+    galaxyPoints.forEach(point => {
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, 1, 0, Math.PI * 2);
+        ctx.fill();
+    });
+}
+
+function animate() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawStars();
+    drawGalaxy();
+    drawSun();
+    drawPlanets();
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>

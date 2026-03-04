@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Galactic Rotation</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Buttons */
+a {
+    color: black;
+    background-color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 15px rgba(0,120,255,0.8);
+}
+
+a:active {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0,120,255,1);
+}
+</style>
+
+</head>
+
+
+
+<h1 style="font-size:100px;text-align:center;margin-top: 80px;">ASTRONOMY</h1>
+
+<div style="text-align:center;margin-bottom:20px;">
+    <a href="eclipse.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="astronomy.html">Back</a>
+</div>
+
+<hr>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    overflow: auto;
+}
+canvas {
+    display: block;
+}
+button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 15px;
+    background: white;
+    border: none;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<button onclick="toggleRotation()">Pause</button>
+<canvas id="galaxy"></canvas>
+
+<script>
+const canvas = document.getElementById("galaxy");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let centerX = canvas.width / 2;
+let centerY = canvas.height / 2;
+
+let stars = [];
+let rotation = 0;
+let rotating = true;
+
+// Create stars in spiral arms
+for (let i = 0; i < 800; i++) {
+    let radius = Math.random() * 300;
+    let angle = Math.random() * Math.PI * 2;
+
+    stars.push({
+        radius: radius,
+        angle: angle,
+        size: Math.random() * 2
+    });
+}
+
+function drawGalaxy() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Galactic core
+    let gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 80);
+    gradient.addColorStop(0, "white");
+    gradient.addColorStop(1, "orange");
+
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, 80, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Stars
+    ctx.fillStyle = "white";
+
+    stars.forEach(star => {
+        let spiralOffset = star.radius * 0.02;
+        let x = centerX + star.radius * Math.cos(star.angle + rotation + spiralOffset);
+        let y = centerY + star.radius * Math.sin(star.angle + rotation + spiralOffset);
+
+        ctx.beginPath();
+        ctx.arc(x, y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+}
+
+function animate() {
+    if (rotating) {
+        rotation += 0.002;
+    }
+    drawGalaxy();
+    requestAnimationFrame(animate);
+}
+
+function toggleRotation() {
+    rotating = !rotating;
+    document.querySelector("button").innerText = rotating ? "Pause" : "Play";
+}
+
+animate();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Black Hole Formation Simulation</title>
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Star background */
+#starCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+/* Buttons */
+a {
+    color: black;
+    background-color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 15px rgba(0,120,255,0.8);
+}
+
+a:active {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0,120,255,1);
+}
+</style>
+
+</head>
+
+<body>
+
+<canvas id="starCanvas"></canvas>
+
+<h1 style="font-size:100px;text-align:center;margin-top: 80px;">BLACK HOLES</h1>
+
+<div style="text-align:center;margin-bottom:20px;">
+    <a href="eclipse.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="blackholes2.html">Back</a>
+</div>
+
+<hr>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    overflow: auto;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+#controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+button {
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+canvas {
+    display: block;
+}
+</style>
+</head>
+<body>
+
+<div id="controls">
+    <button id="toggleBtn">Pause</button>
+</div>
+
+<canvas id="space"></canvas>
+
+<script>
+const canvas = document.getElementById("space");
+const ctx = canvas.getContext("2d");
+const toggleBtn = document.getElementById("toggleBtn");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let running = true;
+let stage = 0;
+let radius = 120;
+let flash = 0;
+let angle = 0;
+let timer = 0;
+
+function resetCycle() {
+    stage = 0;
+    radius = 120;
+    flash = 0;
+    angle = 0;
+    timer = 0;
+}
+
+function drawText(text) {
+    ctx.fillStyle = "white";
+    ctx.font = "20px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText(text, canvas.width/2, 60);
+}
+
+function animate() {
+    if (!running) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+
+    timer++;
+
+    // Stage 1 – Stable Star
+    if (stage === 0) {
+        ctx.fillStyle = "orange";
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        drawText("Massive Star");
+
+        if (timer > 120) stage = 1;
+    }
+
+    // Stage 2 – Collapse
+    if (stage === 1) {
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        drawText("Core Collapse Begins");
+
+        radius -= 3;
+        if (radius < 25) {
+            stage = 2;
+            flash = 1;
+        }
+    }
+
+    // Stage 3 – Supernova Flash
+    if (stage === 2) {
+        ctx.fillStyle = "white";
+        ctx.globalAlpha = flash;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 200, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        drawText("Supernova Explosion");
+
+        flash -= 0.05;
+        if (flash <= 0) stage = 3;
+    }
+
+    // Stage 4 – Black Hole
+    if (stage === 3) {
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.arc(cx, cy, 30, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Accretion disk
+        ctx.strokeStyle = "cyan";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 70, 0, Math.PI * 2);
+        ctx.stroke();
+
+        let x = cx + Math.cos(angle) * 70;
+        let y = cy + Math.sin(angle) * 70;
+
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        ctx.arc(x, y, 6, 0, Math.PI * 2);
+        ctx.fill();
+
+        angle += 0.08;
+
+        drawText("Black Hole Formed");
+
+        if (timer > 420) resetCycle(); // repeat cycle
+    }
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+// Toggle button
+toggleBtn.addEventListener("click", () => {
+    running = !running;
+    toggleBtn.textContent = running ? "Pause" : "Start";
+    if (running) animate();
+});
+</script>
+
+</body>
+</html>

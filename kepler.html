@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Planetary Orbit Simulation</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Buttons */
+a {
+    color: black;
+    background-color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 15px rgba(0,120,255,0.8);
+}
+
+a:active {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0,120,255,1);
+}
+</style>
+
+</head>
+
+
+
+<h1 style="font-size:100px;text-align:center;margin-top: 80px;">ASTRONOMY</h1>
+
+<div style="text-align:center;margin-bottom:20px;">
+    <a href="eclipse.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="astronomy.html">Back</a>
+</div>
+
+<hr>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: auto;
+}
+
+#controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+button {
+    padding: 8px 14px;
+    margin-right: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+canvas {
+    display: block;
+}
+</style>
+</head>
+<body>
+
+<div id="controls">
+    <button id="toggleBtn">Pause</button>
+    <button id="resetBtn">Reset</button>
+</div>
+
+<canvas id="space"></canvas>
+
+<script>
+const canvas = document.getElementById("space");
+const ctx = canvas.getContext("2d");
+const toggleBtn = document.getElementById("toggleBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let running = true;
+
+// Orbital parameters
+let angle = 0;
+const a = 250;   // semi-major axis
+const b = 180;   // semi-minor axis
+const cx = canvas.width / 2;
+const cy = canvas.height / 2;
+
+function drawOrbit() {
+    ctx.strokeStyle = "gray";
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, a, b, 0, 0, Math.PI * 2);
+    ctx.stroke();
+}
+
+function drawSun() {
+    ctx.fillStyle = "yellow";
+    ctx.beginPath();
+    ctx.arc(cx - 80, cy, 30, 0, Math.PI * 2); // slightly off-center
+    ctx.fill();
+}
+
+function drawPlanet(x, y) {
+    ctx.fillStyle = "cyan";
+    ctx.beginPath();
+    ctx.arc(x, y, 12, 0, Math.PI * 2);
+    ctx.fill();
+}
+
+function drawLabels() {
+    ctx.fillStyle = "white";
+    ctx.font = "18px Arial";
+    ctx.fillText("Star", cx - 120, cy - 40);
+    ctx.fillText("Planet", cx + 100, cy - 200);
+}
+
+function animate() {
+    if (!running) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawOrbit();
+    drawSun();
+
+    // Kepler-like speed variation (faster near star)
+    let speed = 0.01 + 0.02 * (1 - Math.cos(angle));
+    angle += speed;
+
+    let x = cx + a * Math.cos(angle);
+    let y = cy + b * Math.sin(angle);
+
+    drawPlanet(x, y);
+    drawLabels();
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+// Toggle
+toggleBtn.addEventListener("click", () => {
+    running = !running;
+    toggleBtn.textContent = running ? "Pause" : "Start";
+    if (running) animate();
+});
+
+// Reset
+resetBtn.addEventListener("click", () => {
+    angle = 0;
+});
+</script>
+
+</body>
+</html>
