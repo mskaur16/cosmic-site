@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aerodynamics</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Star background */
+#starCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+/* Buttons */
+a {
+    color: black;
+    background-color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 15px rgba(0,120,255,0.8);
+}
+
+a:active {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0,120,255,1);
+}
+</style>
+
+</head>
+
+<body>
+
+<canvas id="starCanvas"></canvas>
+
+<h1 style="font-size:100px;text-align:center;margin-top: 80px;">AERODYNAMICS</h1>
+
+<div style="text-align:center;margin-bottom:20px;">
+    <a href="eclipse.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contents.html">Contents</a>
+</div>
+
+<hr>
+
+<h2 style="margin-left: 15px; font-size:20px; "> What is Aerodynamics? </h2>
+<p style="margin-left: 15px; font-size:18px; "> Aerodynamics is the study of how air (a fluid) flows around objects. It relies on fluid dynamics and Newton’s laws to explain lift and drag. Bernoulli’s principle (1738) and Newton’s laws (1687) form the core of aerodynamic theory.</p>
+ 
+<hr>
+
+<h2 style="margin-left: 15px; font-size:20px; "> What is Lift? </h2>
+<p style="margin-left: 15px; font-size:18px; "> An airfoil (wing) tilted upward deflects airflow downward (pushing the wing up, by Newton’s 3rd law) and causes faster flow over the curved top (lower pressure, by Bernoulli’s principle). These combined pressure and momentum effects generate <i> lift </i>.
+
+<hr>
+
+<h4 style="margin-left: 15px; font-size:20px; "> What is Drag? </h4>
+<p style="margin-left: 15px; font-size:18px; "> Drag is the resistive force of air against motion, which grows roughly with the square of speed. </p>
+
+<hr>
+
+<h3 style="margin-left: 15px; font-size:15px; "> HELP POINTS!</h3>
+
+<ul>
+<li> Fluid dynamics-studying fluids in motion i.e. analysing their flow, behaviour, force, and interaction with solid surface</li>
+<li> Bernoulli's principle- whenever the speed of fluid is increased the pressure will decrease, vice versa. </li>
+</ul>
+
+<hr>
+
+<img src="liftanddrag.png" style="width:50%; display:block; margin:auto;" >
+
+<hr>
+
+<h5 style="margin-left: 15px; font-size:20px; "> A brief history on Aerodynamics </h5>
+<p style="margin-left: 15px; font-size:18px; ">Understanding of aerodynamics grew slowly over centuries. Early thinkers like Aristotle and Archimedes (2nd–3rd century BC) recognized that fluids (air and water) behave as continuous media, but a quantitative theory awaited modern science.<br> In 1726 Isaac Newton conducted pioneering air-resistance experiments and formulated his laws of motion.<br> In 1738 Daniel Bernoulli published the principle relating flow speed and pressure, providing a key explanation for lift.<br> By the 19th century engineers were testing wings: the first aerodynamic wind tunnel was built in 1871, and researchers like Otto Lilienthal explored glider flight.<br> Sir George Cayley (1799) identified the four forces of flight (lift, weight, thrust, drag) and built early gliders.<br> The Wright brothers’ successful powered flight in 1903 validated these principles and ushered in modern aerodynamics.<br> Over the 20th century, advances (such as Prandtl’s boundary-layer theory) refined our understanding, but Bernoulli and Newton remain the basis of aerodynamic design.</p>
+
+<hr>
+
+<h6 style="margin-left: 15px; font-size:20px; "> How can we apply Aerodynamics in in automobiles? </h6>
+<p style="margin-left: 15px; font-size:18px; ">Figure: Wind-tunnel flow visualization (green streamlines) around a model car. Modern cars are shaped to let air flow smoothly, minimizing drag (air resistance).<br> Designers use streamlined body profiles, smooth underbodies, and tapered rear ends to reduce turbulence.<br> At the rear, spoilers or diffusers redirect airflow to counteract lift (in effect creating downforce for stability).<br> For example, a raised rear wing pushes air upward at the back, forcing the car down onto the road for better grip.<br> Reducing drag directly saves fuel: cutting aerodynamic resistance even a little can significantly improve fuel economy.<br> Many high-performance cars also use active aerodynamics – movable spoilers, vents or flaps that adjust in real time to driving conditions – to balance low drag on straight roads with added downforce in corners.</p>
+
+<hr>
+
+<img src="car.png" style="width:50%; display:block; margin:auto;" >
+
+
+<hr>
+
+
+<h6 style="margin-left: 15px; font-size:20px; "> How can we apply Aerodynamics to aricrafts</h6>
+<p style="margin-left: 15px; font-size:18px; "> Aircraft wings are built as airfoils (curved cross-sections) that generate lift via pressure difference.<br> Faster airflow over the curved top surface creates lower pressure, while higher pressure under the wing lifts the plane.<br> Wings often include flaps and slats (movable surfaces) that extend at takeoff/landing to increase wing area and camber, giving extra lift at low speeds.<br> Large military and transport aircraft also use winglets at the tips to reduce wingtip vortices and drag.<br> To control the aircraft’s attitude, designers incorporate flight control surfaces: ailerons (on the wing trailing edges) roll the aircraft, elevators (tailplanes) pitch the nose, and the rudder (vertical tail) yaws the aircraft.<br> By deflecting airflow up or down, each surface changes the pressure distribution on the wing or tail, steering the plane as needed.<br> These design strategies (airfoil shapes, high-lift devices, and control surfaces) are fine-tuned to maximize lift-to-drag ratio and stability in flight.</P>
+
+<hr>
+
+<img src="aircraft2.png" style="width:50%; display:block; margin:auto;" >
+
+<hr>
+
+<h6 style="margin-left: 15px; font-size:20px; "> How can we apply Aerodynamics to a spacecraft? </h6>
+<p style="margin-left: 15px; font-size:18px; ">Rockets are designed to fly straight at very high speeds, so minimizing drag and ensuring stability are critical.<br> Their noses use pointed ogive or parabolic shapes that “slice” through air with minimal resistance.<br> In fact, a blunt or rounded nose that works well at low speed would create huge drag at supersonic speeds; instead, supersonic rockets use sharp cones to reduce shock-wave drag.<br> The fins at a rocket’s tail act like arrow fletching: they increase drag at the back end so the rocket stays pointed forward (keeping the center of pressure behind the center of mass). <br> In summary: a slim diameter and tapered nose minimize aerodynamic resistance, while strategically sized fins maintain flight stability. <br>Supersonic flight also brings shock waves and heating effects, which are major design considerations beyond basic aerodynamics. </P>
+
+<hr style="margin-bottom: 100px;">
+
+
+
+</style>
+</head>
+<body>
+<div id="info">Phase: Launch from Earth</div>
+<canvas id="canvas"></canvas>
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Rocket object
+let rocket = {
+  x: canvas.width/2,
+  y: canvas.height-150,
+  width: 40,
+  height: 100,
+  speed: 0,
+  acceleration: 0.06, // slow for step-by-step understanding
+  drag: 0.02,
+  maxSpeed: 6
+};
+
+// Stars
+const stars = [];
+for(let i=0;i<200;i++){
+  stars.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, radius:Math.random()*1.5, brightness:Math.random()});
+}
+
+// Draw stars
+function drawStars(){
+  for(const s of stars){
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.radius,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,255,255,${s.brightness})`;
+    ctx.fill();
+    s.brightness += (Math.random()-0.5)*0.02;
+    if(s.brightness<0) s.brightness=0;
+    if(s.brightness>1) s.brightness=1;
+  }
+}
+
+// Draw rocket
+function drawRocket(){
+  // Body
+  ctx.fillStyle='silver';
+  ctx.fillRect(rocket.x-rocket.width/2, rocket.y-rocket.height, rocket.width, rocket.height);
+  // Nose
+  ctx.beginPath();
+  ctx.moveTo(rocket.x-rocket.width/2, rocket.y-rocket.height);
+  ctx.lineTo(rocket.x+rocket.width/2, rocket.y-rocket.height);
+  ctx.lineTo(rocket.x, rocket.y-rocket.height-30);
+  ctx.closePath();
+  ctx.fillStyle='red';
+  ctx.fill();
+  // Flames
+  ctx.beginPath();
+  ctx.moveTo(rocket.x-rocket.width/2+5, rocket.y);
+  ctx.lineTo(rocket.x+rocket.width/2-5, rocket.y);
+  ctx.lineTo(rocket.x, rocket.y+40);
+  ctx.closePath();
+  ctx.fillStyle='orange';
+  ctx.fill();
+}
+
+// Draw arrows with labels
+function drawArrow(x,y,length,angle,color,label){
+  ctx.save();
+  ctx.translate(x,y);
+  ctx.rotate(angle);
+  ctx.beginPath();
+  ctx.moveTo(0,0);
+  ctx.lineTo(0,-length);
+  ctx.strokeStyle=color;
+  ctx.lineWidth=4;
+  ctx.stroke();
+  // Arrowhead
+  ctx.beginPath();
+  ctx.moveTo(0,-length);
+  ctx.lineTo(-5,-length+10);
+  ctx.lineTo(5,-length+10);
+  ctx.closePath();
+  ctx.fillStyle=color;
+  ctx.fill();
+  // Label
+  ctx.fillStyle='white';
+  ctx.font='16px Arial';
+  ctx.fillText(label, 10, -length/2);
+  ctx.restore();
+}
+
+// Draw speedometer
+function drawSpeedometer(){
+  const r=60, cx=100, cy=canvas.height-100;
+  ctx.beginPath();
+  ctx.arc(cx,cy,r,Math.PI,0,false);
+  ctx.strokeStyle='white';
+  ctx.lineWidth=4;
+  ctx.stroke();
+  for(let i=0;i<=10;i++){
+    const angle=Math.PI + (i/10)*Math.PI;
+    const x1=cx+r*Math.cos(angle), y1=cy+r*Math.sin(angle);
+    const x2=cx+(r-10)*Math.cos(angle), y2=cy+(r-10)*Math.sin(angle);
+    ctx.beginPath();
+    ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+  }
+  const speedPercent = Math.min(rocket.speed/rocket.maxSpeed,1);
+  const angle = Math.PI + speedPercent*Math.PI;
+  const nx = cx + (r-20)*Math.cos(angle), ny = cy + (r-20)*Math.sin(angle);
+  ctx.beginPath();
+  ctx.moveTo(cx,cy); ctx.lineTo(nx,ny);
+  ctx.strokeStyle='red'; ctx.lineWidth=3;
+  ctx.stroke();
+  ctx.fillStyle='white'; ctx.font='14px Arial';
+  ctx.fillText(`Speed: ${rocket.speed.toFixed(1)}`, cx-35, cy+r+20);
+}
+
+// Animate function
+let explanationStep = "";
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const gradient = ctx.createLinearGradient(0,0,0,canvas.height);
+  gradient.addColorStop(0,'#000'); // space
+  gradient.addColorStop(0.5,'#001a33'); // upper atmosphere
+  gradient.addColorStop(1,'#87CEEB'); // sky
+  ctx.fillStyle = gradient; ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  drawStars();
+  drawRocket();
+  drawSpeedometer();
+
+  // Physics
+  let netAcc = rocket.acceleration;
+  let phase="Space";
+  if(rocket.y>canvas.height/2){
+    netAcc -= rocket.speed*rocket.drag;
+    phase="Atmosphere";
+    explanationStep = "Drag is high in atmosphere, slowing acceleration";
+  } else if(rocket.y>canvas.height/4){
+    netAcc -= rocket.speed*rocket.drag*0.3;
+    phase="Upper Atmosphere";
+    explanationStep = "Drag decreases as air thins, acceleration increases";
+  } else {
+    phase="Space";
+    explanationStep = "No drag in space, acceleration equals thrust/mass";
+  }
+  document.getElementById('info').innerText = `Phase: ${phase}\n${explanationStep}`;
+
+  rocket.speed += netAcc;
+  if(rocket.speed>rocket.maxSpeed) rocket.speed=rocket.maxSpeed;
+  rocket.y -= rocket.speed;
+
+  // Repeat for learning
+  if(rocket.y < -150){
+    rocket.y = canvas.height-150;
+    rocket.speed = 0;
+  }
+
+  // Draw arrows
+  drawArrow(rocket.x, rocket.y-rocket.height/2, rocket.acceleration*150, Math.PI/2, 'green','Thrust');
+  if(phase!=="Space") drawArrow(rocket.x, rocket.y-rocket.height/2, rocket.speed*rocket.drag*300, -Math.PI/2,'yellow','Drag');
+  drawArrow(rocket.x, rocket.y-rocket.height/2, rocket.speed*50, Math.PI/2,'cyan','Acceleration');
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+</body>
+</html>
+
+<hr>
+
+<h6 style="margin-left: 15px; font-size:20px; ">Current trends and Innovations </h6>
+<ol style="margin-left: 15px; font-size:18px; " >
+<li>Computational Fluid Dynamics (CFD): High-speed computers now simulate airflow in 3D with great accuracy. CFD lets engineers test designs virtually and optimize shapes before building models. Advances in algorithms and processing power mean even detailed vehicle airflow can be tuned in computer models, speeding up development.</li>
+<li>Active Aero Elements: Cars and planes increasingly use movable aerodynamic parts. Examples include adjustable front/rear spoilers or vent shutters on cars, and variable-geometry wings or flaps on aircraft. These systems alter the vehicle’s shape on the fly for the best efficiency – for instance, a spoiler that lowers at high speed for less drag, or raises for more downforce when needed.</li>
+<li>Morphing Wings: Researchers (e.g. NASA’s MADCAT project) are developing wings made of smart materials or articulated “building blocks” that twist or morph smoothly during flight. Such wings could eliminate conventional flaps and ailerons, reducing gaps and edges that cause drag. By actively changing shape, morphing wings aim to maintain an ideal wing profile at every flight condition, improving fuel efficiency.</li>
+<li>Wind Tunnel & Experimental Upgrades: Physical testing is still vital. Modern wind tunnels use better balance sensors, flow visualization (laser/Digital Particle Image Velocimetry), and even climate control to simulate altitude. Some efforts create “digital twins” that blend wind-tunnel data with CFD. Nevertheless, the trend is to combine computer models with scaled tests to refine designs faster.</li>
+<p style="margin-left: 15px; font-size:18px; ">These innovations – from smarter simulations to active shape control – continue to push the boundaries of aerodynamic performance. They build on the century of theory and experimentation that began with Newton and Bernoulli, applying it to faster, more efficient cars, aircraft, and rockets.</p>
+
+<hr style="margin-bottom: 100px;">
+
+
+<script>
+const canvas = document.getElementById("starCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = [];
+
+for (let i = 0; i < 200; i++) {
+    stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        speed: Math.random() * 0.5 + 0.2
+    });
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+
+    stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        star.y += star.speed;
+
+        if (star.y > canvas.height) {
+            star.y = 0;
+            star.x = Math.random() * canvas.width;
+        }
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
